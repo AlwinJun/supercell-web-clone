@@ -1,0 +1,6 @@
+/* 320px */
+@custom-media --viewport--small (width > 20em);
+/* 790px */
+@custom-media --viewport--medium (width > 49.375em);
+/* 1200px */
+@custom-media --viewport--large (width > 75em);
