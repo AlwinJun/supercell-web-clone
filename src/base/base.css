@@ -1,0 +1,9 @@
+body {
+  font-size: var(--fs-400);
+  font-weight: var(--fw-300);
+  font-family: var(--ff-main);
+}
+
+a:hover {
+  cursor: pointer;
+}
