@@ -1,1 +1,202 @@
-:root{--clr-black:#000;--clr-white:#fff;--clr-inactive:grey;--clr-active-inactive:#303030;--clr-hero-btn:#1f7aeb;--clr-accent-blue:#2d85f3;--clr-accent-pink:#fb4a9d;--fs-100:0.813rem;--fs-200:0.875rem;--fs-300:1rem;--fs-400:1.125rem;--fs-500:1.563rem;--fs-600:2rem;--fs-700:2.125rem;--ff-main:"Montserrat",Helvetica,sans-serif;--fw-300:300;--fw-400:400;--fw-500:500;--btn-br:0.5rem}*,:after,:before{box-sizing:border-box}blockquote,body,dd,dl,figure,h1,h2,h3,h4,p{margin:0}ol[role=list],ul[role=list]{list-style:none;margin-left:0;margin-right:0;padding:0}html:focus-within{scroll-behavior:smooth}body{text-rendering:optimizeSpeed}img,picture{display:block;max-width:100%}button,input,select,textarea{font:inherit}button{border:none}a,a:active,a:visited{-webkit-text-decoration:none;text-decoration:none}
+:root {
+  --clr-black: #000;
+  --clr-white: #fff;
+  --clr-inactive: grey;
+  --clr-active-inactive: #303030;
+  --clr-hero-btn: #1f7aeb;
+  --clr-accent-blue: #2d85f3;
+  --clr-accent-pink: #fb4a9d;
+  --fs-100: 0.813rem;
+  --fs-200: 0.875rem;
+  --fs-300: 1rem;
+  --fs-400: 1.125rem;
+  --fs-500: 1.563rem;
+  --fs-600: 2rem;
+  --fs-700: 2.125rem;
+  --ff-main: 'Montserrat', Helvetica, sans-serif;
+  --fw-300: 300;
+  --fw-400: 400;
+  --fw-500: 500;
+  --fw-600: 600;
+  --fw-700: 700;
+  --btn-br: 0.5rem;
+}
+*,
+:after,
+:before {
+  box-sizing: border-box;
+}
+blockquote,
+body,
+dd,
+dl,
+figure,
+h1,
+h2,
+h3,
+h4,
+p {
+  margin: 0;
+}
+ol,
+ul {
+  list-style: none;
+  margin-left: 0;
+  margin-right: 0;
+  padding: 0;
+}
+html:focus-within {
+  scroll-behavior: smooth;
+}
+body {
+  text-rendering: optimizeSpeed;
+}
+img,
+picture {
+  display: block;
+  max-width: 100%;
+}
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+button {
+  border: none;
+}
+a,
+a:active,
+a:visited {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+body {
+  font-family: Montserrat, Helvetica, sans-serif;
+  font-family: var(--ff-main);
+  font-size: 1.125rem;
+  font-size: var(--fs-400);
+  font-weight: 300;
+  font-weight: var(--fw-300);
+}
+a:hover {
+  cursor: pointer;
+}
+.nav-menu {
+  align-items: center;
+  background-color: #000;
+  background-color: var(--clr-black);
+  display: flex;
+  height: 4rem;
+  justify-content: space-between;
+  left: 0;
+  padding: 1rem;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+.nav-menu img {
+  width: 2.875rem;
+}
+.nav-toggle {
+  height: 2.5rem;
+}
+.nav-toggle img {
+  transform: translateY(-55%);
+  transition: transform 0.2s linear;
+}
+.nav-toggle img:hover {
+  transform: translateY(-5%);
+}
+.nav-content {
+  background-color: #000;
+  background-color: var(--clr-black);
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 4rem);
+  justify-content: space-between;
+  margin-top: 4rem;
+  overflow: auto;
+  padding-bottom: 1.5rem;
+  padding-left: 2rem;
+}
+.nav-items li {
+  align-items: center;
+  margin-bottom: 1.3rem;
+}
+.nav-items li:hover .dropdown-grid {
+  grid-template-rows: 1fr;
+}
+.nav-items li .flex-row {
+  align-items: center;
+  display: flex;
+}
+.nav-items li:hover h3 {
+  color: #fff;
+  cursor: pointer;
+}
+.nav-items li.toggled h3 {
+  color: #fff;
+}
+.nav-items li.inactive h3 {
+  color: #303030;
+  color: var(--clr-active-inactive);
+}
+.nav-items li:hover span {
+  rotate: 45deg;
+}
+.nav-items h3 {
+  color: grey;
+  color: var(--clr-inactive);
+  font-size: 1.563rem;
+  font-size: var(--fs-500);
+  font-weight: 600;
+  font-weight: var(--fw-600);
+  margin-right: 1rem;
+}
+.nav-items span {
+  border-bottom: 2px solid grey;
+  border-bottom: 2px solid var(--clr-inactive);
+  border-right: 2px solid grey;
+  border-right: 2px solid var(--clr-inactive);
+  height: 7px;
+  rotate: -135deg;
+  transition: rotate 0.2s linear;
+  width: 7px;
+}
+.nav-items li:last-child img {
+  margin-right: 0.7rem;
+  width: 1rem;
+}
+.dropdown-grid {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: all 0.2s linear;
+}
+.sub-items {
+  overflow: hidden;
+  padding-left: 0.5rem;
+}
+.sub-items li {
+  color: grey;
+  color: var(--clr-inactive);
+  font-size: 1rem;
+  font-size: var(--fs-300);
+  font-weight: 600;
+  font-weight: var(--fw-600);
+  margin-top: 1rem;
+}
+.sub-items li:hover {
+  color: #fff;
+  cursor: pointer;
+}
+.nav-icons {
+  display: flex;
+  gap: 2rem;
+}
+.nav-icons img {
+  width: 2rem;
+}
+.nav-icons img:hover {
+  color: #fff;
+}
