@@ -1,0 +1,22 @@
+{
+  "name": "supercell-web-clone",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "watch:css": "postcss src/main.css -o dist/style.css -w",
+    "build:css": "postcss src/main.css -o dist/style.css"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^10.4.14",
+    "cssnano": "^6.0.1",
+    "postcss": "^8.4.24",
+    "postcss-cli": "^10.1.0",
+    "postcss-import": "^15.1.0",
+    "postcss-preset-env": "^8.5.1"
+  }
+}
+
