@@ -131,11 +131,14 @@
 
   & li {
     margin-top: 1rem;
-    font-size: var(--fs-300);
-    font-weight: var(--fw-600);
-    color: var(--clr-inactive);
 
-    &:hover {
+    & a {
+      font-size: var(--fs-300);
+      font-weight: var(--fw-600);
+      color: var(--clr-inactive);
+    }
+
+    &:hover a {
       cursor: pointer;
       color: #fff;
     }
@@ -231,7 +234,7 @@
         padding-left: 2rem;
         background-color: rgb(0, 0, 0, 0.5);
 
-        & li {
+        & li a {
           font-size: var(--fs-300);
           font-weight: var(--fw-600);
           color: rgb(200, 200, 200);
