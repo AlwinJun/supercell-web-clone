@@ -30,14 +30,26 @@
   @media (--viewport-large) {
     display: none;
   }
+
+  /* Show nav content */
+  &:hover + .nav-expand {
+    grid-template-rows: 1fr;
+    height: calc(100vh - 4rem);
+    margin-top: 4rem;
+  }
 }
 
 .nav-toggle {
   height: 2.5rem;
+  overflow: hidden;
 
   & img {
     transform: translateY(-55%);
-    transition: transform 200ms linear;
+    transition: transform 300ms linear;
+
+    &:hover {
+      transform: translateY(-5%);
+    }
 
     &:hover {
       transform: translateY(-5%);
@@ -45,14 +57,20 @@
   }
 }
 
+.nav-expand {
+  display: grid;
+  grid-template-rows: 0;
+  transition: all 300ms linear;
+}
+
 /* Nav main items */
 .nav-content {
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  overflow: auto;
-  height: calc(100vh - 4rem);
-  margin-top: 4rem;
+  /* height: calc(100vh - 4rem); */
+  /* margin-top: 4rem; */
   padding-left: 2rem;
   padding-bottom: 1.5rem;
   background-color: var(--clr-black);
