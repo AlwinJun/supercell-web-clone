@@ -11,31 +11,33 @@ const rootStyles = getComputedStyle(document.documentElement);
 var inactiveColor = rootStyles.getPropertyValue('--clr-inactive');
 var activeInactiveColor = rootStyles.getPropertyValue('--clr-active-inactive');
 
-//Event Listeners
-navBtn.addEventListener('click', navBarExpand);
-navItems.forEach((item) => item.addEventListener('click', showSubItems));
-
 // Event HAndlers
-function navBarExpand() {
-  navBtn.classList.toggle('toggled');
-  navContent.classList.toggle('expand');
-
-  navItems.forEach((item) => {
-    item.querySelector('h3').style.color = inactiveColor;
-  });
-}
-
-function showSubItems(e) {
-  const navItem = e.currentTarget;
-  const navItemText = navItem.querySelector('h3');
-  const navItemArrowBtn = navItem.querySelector('span');
-  const isClicked = navItem.classList.contains('click');
-
+const resetNavContent = () => {
   navItems.forEach((item) => {
     item.classList.remove('click');
     item.querySelector('h3').style.color = activeInactiveColor;
     item.querySelector('span').classList.remove('rotate');
   });
+};
+
+const navBarExpand = () => {
+  navBtn.classList.toggle('toggled');
+  navContent.classList.toggle('expand');
+
+  resetNavContent();
+
+  navItems.forEach((item) => {
+    item.querySelector('h3').style.color = inactiveColor;
+  });
+};
+
+const showSubItems = (e) => {
+  const navItem = e.currentTarget;
+  const navItemText = navItem.querySelector('h3');
+  const navItemArrowBtn = navItem.querySelector('span');
+  const isClicked = navItem.classList.contains('click');
+
+  resetNavContent();
 
   if (!isClicked) {
     // Toggle 'click' class on the clicked nav item
@@ -43,4 +45,8 @@ function showSubItems(e) {
     navItemText.style.color = 'white';
     navItemArrowBtn.classList.add('rotate');
   }
-}
+};
+
+//Event Listeners
+navBtn.addEventListener('click', navBarExpand);
+navItems.forEach((item) => item.addEventListener('click', showSubItems));
