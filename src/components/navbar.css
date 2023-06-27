@@ -82,7 +82,7 @@
     align-items: center;
     margin-bottom: 1.3rem;
 
-    &:hover .dropdown-grid {
+    &.click .dropdown-grid {
       grid-template-rows: 1fr;
     }
 
@@ -103,10 +103,6 @@
     &.inactive h3 {
       color: var(--clr-active-inactive);
     }
-
-    &:hover span {
-      rotate: 45deg;
-    }
   }
 
   & h3 {
@@ -123,6 +119,10 @@
     border-right: 2px solid var(--clr-inactive);
     border-bottom: 2px solid var(--clr-inactive);
     transition: rotate 200ms linear;
+  }
+
+  & span.rotate {
+    rotate: 45deg;
   }
 
   & li:last-child {
