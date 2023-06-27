@@ -5,6 +5,8 @@ const navBtn = document.querySelector('.nav-toggle');
 const navContent = document.querySelector('.nav-expand');
 const navItems = document.querySelectorAll('.nav-item');
 const dropdownGrid = document.querySelector('.dropdownGrid');
+const searchIcon = document.querySelector('.search');
+const searchBar = document.querySelector('.search-bar');
 
 //Get :root styles
 const rootStyles = getComputedStyle(document.documentElement);
@@ -47,6 +49,11 @@ const showSubItems = (e) => {
   }
 };
 
+const showSearchBar = () => {
+  searchBar.classList.toggle('search');
+};
+
 //Event Listeners
 navBtn.addEventListener('click', navBarExpand);
 navItems.forEach((item) => item.addEventListener('click', showSubItems));
+searchIcon.addEventListener('click', showSearchBar);

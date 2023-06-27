@@ -206,6 +206,7 @@
   }
 
   .desktop-nav__content {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -292,6 +293,46 @@
       background-color: var(--clr-inactive);
     }
   }
+  .search-bar.search {
+    grid-template-rows: 1fr;
+    width: 15rem;
+  }
+
+  .search-bar {
+    /* Relative to nav content */
+    position: absolute;
+    right: 0px;
+    top: 1.1rem;
+    display: grid;
+    grid-template-rows: 0fr;
+    width: 15rem;
+
+    overflow: hidden;
+    transition: all 200ms linear;
+
+    & form {
+      display: grid;
+      grid-template-rows: 1fr;
+      transition: all 0.2s linear;
+      overflow: hidden;
+    }
+
+    & input {
+      height: 2rem;
+      padding: 0.3rem;
+      font-size: var(--fs-300);
+      color: var(--clr-inactive);
+      background-color: black;
+      border: none;
+      border-bottom: 1px solid var(--clr-inactive);
+
+      &:hover,
+      &:focus {
+        cursor: pointer;
+      }
+    }
+  }
+
   .search {
     width: 1rem;
     margin-left: 3rem;
