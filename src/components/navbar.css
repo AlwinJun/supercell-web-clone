@@ -1,6 +1,6 @@
 /* Main nav */
 .nav-main {
-  position: relative;
+  /* position: relative; */
   width: 100%;
 
   @media (--viewport-medium) {
@@ -185,7 +185,7 @@
 
   .desktop-nav {
     width: inherit;
-    position: relative;
+    /* position: relative; */
 
     .desktop-nav__menu {
       position: fixed;
@@ -238,11 +238,11 @@
       .dropdown-grid {
         position: absolute;
         top: 4rem;
-        left: 0;
+        left: -119px;
+        right: -85px;
         display: grid;
         grid-template-rows: 0fr;
         height: 4rem;
-        width: 100%;
         transition: all 200ms linear;
       }
 
