@@ -1,6 +1,6 @@
 @import 'base/root.css';
 @import 'base/resets.css';
 @import 'base/breakpoints.css';
-@import 'base/base.css';
+@import 'base/global.css';
 
 @import 'components/navbar.css';

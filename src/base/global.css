@@ -7,3 +7,9 @@ body {
 a:hover {
   cursor: pointer;
 }
+
+#main-container {
+  outline: 1px solid red;
+  margin: auto;
+  width: min(100%, 1250px);
+}
