@@ -9,7 +9,9 @@ a:hover {
 }
 
 #main-container {
-  outline: 1px solid red;
+  /* outline: 1px solid red; */
+  height: 100vh;
+  background-color: red;
   margin: auto;
   width: min(100%, 1250px);
 }
