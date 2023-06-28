@@ -7,8 +7,11 @@
   width: 100%;
   height: 100%;
   margin: auto;
-  outline: 1px solid red;
   object-fit: cover;
+
+  @media (--viewport-medium) {
+    display: none;
+  }
 }
 
 .hero-items {
@@ -60,8 +63,21 @@
     }
   }
 
-  span {
+  & > span {
+    padding: 0.8rem;
     color: white;
     font-weight: 500;
+  }
+}
+
+.desktop-hero {
+  display: none;
+}
+
+@media (--viewport-medium) {
+  .desktop-hero {
+    position: relative;
+    display: block;
+    object-fit: cover;
   }
 }
