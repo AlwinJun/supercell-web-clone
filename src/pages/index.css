@@ -46,6 +46,10 @@
   border-radius: 12rem;
   background-color: var(--clr-accent-blue);
 
+  @media (min-width: 65.625em) {
+    margin-top: 4rem;
+  }
+
   & .arrow-container {
     width: 30%;
     padding-top: 0.8rem;
@@ -88,7 +92,7 @@
 }
 
 /* News Archive Section  */
-.news-archive {
+#news-archive {
   margin-bottom: 3rem;
   padding: 3rem 1rem;
   text-align: center;
