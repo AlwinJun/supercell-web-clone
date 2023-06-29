@@ -1,3 +1,4 @@
+/* Hero Section  */
 .hero {
   height: 100vh;
 }
@@ -68,6 +69,10 @@
     color: white;
     font-weight: 500;
   }
+
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .desktop-hero {
@@ -79,5 +84,58 @@
     position: relative;
     display: block;
     object-fit: cover;
+  }
+}
+
+/* News Archive Section  */
+.news-archive {
+  margin-bottom: 3rem;
+  padding: 3rem 1rem;
+  text-align: center;
+}
+
+.news-articles {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  margin-bottom: 2rem;
+
+  @media (--viewport-medium) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  & > * {
+    user-select: none;
+  }
+}
+
+.news {
+  & > * {
+    margin-bottom: 1rem;
+  }
+
+  & h5 {
+    margin-top: 1rem;
+    font-size: var(--fs-200);
+    font-weight: 500;
+    color: var(--clr-accent-pink);
+  }
+
+  & p a {
+    font-size: var(--fs-300);
+    font-weight: 600;
+    color: black;
+  }
+}
+
+.news-btn {
+  padding: 0.6rem 1.5rem 0.7rem;
+  background-color: var(--clr-accent-blue);
+  border-radius: 10px;
+
+  & a {
+    font-size: var(--fs-200);
+    font-weight: 500;
+    color: white;
   }
 }
