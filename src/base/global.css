@@ -10,7 +10,6 @@ a:hover {
 
 #main-container {
   /* outline: 1px solid red; */
-  height: 100vh;
   margin: auto;
-  width: min(100%, 1250px);
+  width: min(100%, 1750px);
 }
