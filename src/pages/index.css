@@ -94,7 +94,8 @@
 /* News Archive Section  */
 #news-archive {
   margin-bottom: 3rem;
-  padding: 3rem 1rem;
+  padding-top: 3rem;
+  padding-inline: clamp(1rem, 5vw, 15%);
   text-align: center;
 }
 
@@ -134,12 +135,61 @@
 
 .news-btn {
   padding: 0.6rem 1.5rem 0.7rem;
-  background-color: var(--clr-accent-blue);
+  background-color: #1934ab;
   border-radius: 10px;
+
+  @media (--viewport-medium) {
+    background-color: var(--clr-accent-blue);
+  }
 
   & a {
     font-size: var(--fs-200);
     font-weight: 500;
     color: white;
   }
+}
+
+.front-page > * {
+  min-height: 100vh;
+}
+
+.games {
+  display: flex;
+  flex-direction: column;
+  padding: 3rem 1rem 1rem;
+  text-align: center;
+  color: white;
+  background-color: #1934ab;
+
+  @media (--viewport-medium) {
+    flex-direction: row;
+    align-items: center;
+    min-height: 100vh;
+  }
+
+  & h2 {
+    font-size: var(--fs-700);
+    margin-bottom: 2rem;
+  }
+
+  & p {
+    font-size: var(--fs-300);
+    margin-bottom: 3rem;
+  }
+
+  button {
+    padding: 1rem 1.5rem;
+    border-radius: var(--btn-br);
+
+    & a {
+      font-size: var(--fs-300);
+      font-weight: 600;
+      color: black;
+    }
+  }
+}
+
+.characters img {
+  width: auto;
+  min-height: 100%;
 }
