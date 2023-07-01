@@ -95,7 +95,7 @@
 #news-archive {
   margin-bottom: 3rem;
   padding-top: 3rem;
-  padding-inline: clamp(1rem, 5vw, 15%);
+  padding-inline: clamp(1rem, 7vw, 7rem);
   text-align: center;
 }
 
@@ -149,22 +149,35 @@
   }
 }
 
-.front-page > * {
-  min-height: 100vh;
+/* Front Page Banner Section */
+.front-page .container {
+  width: 100%;
+  height: 100%;
 }
-
 .games {
   display: flex;
   flex-direction: column;
-  padding: 3rem 1rem 1rem;
   text-align: center;
+  width: 100%;
+  height: 100%;
+  padding: 3rem 1rem 2rem;
   color: white;
   background-color: #1934ab;
 
   @media (--viewport-medium) {
     flex-direction: row;
     align-items: center;
-    min-height: 100vh;
+    justify-content: space-between;
+    padding-inline: 4rem;
+
+    .text-info {
+      width: 50%;
+      text-align: left;
+    }
+  }
+
+  @media (--viewport-large) {
+    padding-inline: 5rem;
   }
 
   & h2 {
@@ -188,8 +201,15 @@
     }
   }
 }
+.character {
+  margin: auto;
 
-.characters img {
-  width: auto;
-  min-height: 100%;
+  @media (--viewport-medium) {
+    width: 45%;
+  }
+  & img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
 }
