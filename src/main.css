@@ -3,6 +3,7 @@
 @import 'base/breakpoints.css';
 @import 'base/global.css';
 
+@import 'components/carousel.css';
 @import 'components/navbar.css';
 
 @import 'pages/index.css';
