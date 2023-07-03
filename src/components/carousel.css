@@ -22,7 +22,7 @@
   /* outline: 2px solid green; */
   background-color: #fff;
   box-shadow: 5px 5px 10px 10px #e9dfdf;
-  margin-right: 3rem;
+  margin-right: 4rem;
 
   /* @media (min-width: 600px) {
     max-width: 583px;
@@ -85,26 +85,48 @@
 }
 
 .carousel-btn {
-  display: none;
+  /* display: none; */
 
+  position: absolute;
+  top: 50%;
+  left: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transform: translateY(-50%);
+  width: 100%;
+
+  & > * {
+    width: 60px;
+    cursor: pointer;
+  }
+
+  .carousel-next {
+    right: 0;
+    transform: scaleX(-1); /*Reverse the next image*/
+  }
   @media (--viewport-medium) {
-    position: absolute;
-    top: 50%;
-    left: 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    transform: translateY(-50%);
-    width: 100%;
+  }
+}
 
-    & > * {
-      width: 60px;
-      cursor: pointer;
-    }
+.carousel-dot {
+  margin-bottom: 3rem;
+}
 
-    .carousel-next {
-      right: 0;
-      transform: scaleX(-1); /*Reverse the next image*/
-    }
+.dot-container {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+
+  & > * {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: #d8d3cc;
+    cursor: pointer;
+  }
+
+  button.active {
+    background-color: var(--clr-accent-blue);
   }
 }
