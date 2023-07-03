@@ -6,12 +6,21 @@ const navContent = document.querySelector('.nav-expand');
 const navItems = document.querySelectorAll('.nav-item');
 const dropdownGrid = document.querySelector('.dropdownGrid');
 const searchIcon = document.querySelector('.search');
-const searchBar = document.querySelector('.search-bar');
+const carouselContainer = document.querySelector('.carousel-container');
+const card = carouselContainer.querySelectorAll('.card');
+const prevBtn = document.querySelector('.carousel-prev');
+const nextBtn = document.querySelector('.carousel-next');
 
-//Get :root styles
+//Get  styles property
+// :root
 const rootStyles = getComputedStyle(document.documentElement);
-var inactiveColor = rootStyles.getPropertyValue('--clr-inactive');
-var activeInactiveColor = rootStyles.getPropertyValue('--clr-active-inactive');
+const inactiveColor = rootStyles.getPropertyValue('--clr-inactive');
+const activeInactiveColor = rootStyles.getPropertyValue(
+  '--clr-active-inactive'
+);
+// Card
+const style = window.getComputedStyle(card[0]);
+const marginRight = style.getPropertyValue('margin-right');
 
 // Event HAndlers
 const resetNavContent = () => {
@@ -53,7 +62,61 @@ const showSearchBar = () => {
   searchBar.classList.toggle('search');
 };
 
+// Carousel
+const cardCount = card.length;
+
+let addCardMargin = parseInt(marginRight);
+let currentCardIndex = 0;
+
+const updateCarousel = () => {
+  const cardWidth = carouselContainer.children[0].offsetWidth;
+  const translateX = currentCardIndex * (cardWidth + addCardMargin);
+  carouselContainer.style.transform = `translateX(-${translateX}px)`;
+
+  console.log(translateX);
+};
+
+const previousButton = () => {
+  if (window.innerWidth > 790) {
+    // 2 card content
+    if (currentCardIndex > 1) {
+      currentCardIndex -= 2;
+      updateCarousel();
+    }
+  } else {
+    // 1 card/Mobile View
+    if (currentCardIndex > 0) {
+      currentCardIndex -= 1;
+      updateCarousel();
+    }
+  }
+};
+
+const nextButton = () => {
+  if (window.innerWidth > 790) {
+    // 2 card content
+    if (currentCardIndex < cardCount - 2) {
+      currentCardIndex += 2;
+      updateCarousel();
+    }
+  } else {
+    // 1 card/Mobile View
+    if (currentCardIndex < cardCount - 1) {
+      currentCardIndex += 1;
+      updateCarousel();
+    }
+  }
+};
+
+const intialCarouselStyle = () => {
+  // button prev display none
+  //Add carousel dot button
+};
+
 //Event Listeners
+document.addEventListener('DOMContentLoaded', intialCarouselStyle);
 navBtn.addEventListener('click', navBarExpand);
 navItems.forEach((item) => item.addEventListener('click', showSubItems));
 searchIcon.addEventListener('click', showSearchBar);
+prevBtn.addEventListener('click', previousButton);
+nextBtn.addEventListener('click', nextButton);
