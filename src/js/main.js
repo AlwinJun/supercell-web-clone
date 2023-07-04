@@ -78,12 +78,12 @@ const previousButton = () => {
   nextBtn.style.visibility = 'visible';
 
   if (window.innerWidth > 790) {
-    // 2 card content
+    // 2 card content / Viewport medium-up
     if (currentCardIndex >= 2) {
       currentCardIndex -= 2;
     }
   } else {
-    // 1 card/Mobile View
+    // 1 card / Viewport mobile
     if (currentCardIndex >= 1) {
       currentCardIndex -= 1;
     }
@@ -101,12 +101,12 @@ const nextButton = () => {
   prevBtn.style.visibility = 'visible';
 
   if (window.innerWidth > 790) {
-    // 2 card content
+    // 2 card content / Viewport medium-up
     if (currentCardIndex < cardCount - 2) {
       currentCardIndex += 2;
     }
   } else {
-    // 1 card/Mobile View
+    // 1 card / Viewport mobile
     if (currentCardIndex < cardCount - 1) {
       currentCardIndex += 1;
     }
@@ -121,8 +121,21 @@ const nextButton = () => {
 };
 
 const intialCarouselStyle = () => {
-  // TODOS:
   // Prev btn initial state hidden
+  prevBtn.style.visibility = 'hidden';
+
+  if (window.innerWidth > 790) {
+    // Viewport medium-up
+    if (card.length === 2) {
+      nextBtn.style.visibility = 'hidden';
+    }
+  } else {
+    // Viewport mobile
+    if (card.length === 1) {
+      nextBtn.style.visibility = 'hidden';
+    }
+  }
+
   //Add carousel dot button
 };
 
