@@ -7,7 +7,7 @@ const navItems = document.querySelectorAll('.nav-item');
 const dropdownGrid = document.querySelector('.dropdownGrid');
 const searchIcon = document.querySelector('.search');
 const carouselContainer = document.querySelector('.carousel-container');
-const card = carouselContainer.querySelectorAll('.card');
+const cards = carouselContainer.querySelectorAll('.card');
 const prevBtn = document.querySelector('.carousel-prev');
 const nextBtn = document.querySelector('.carousel-next');
 
@@ -18,8 +18,8 @@ const inactiveColor = rootStyles.getPropertyValue('--clr-inactive');
 const activeInactiveColor = rootStyles.getPropertyValue(
   '--clr-active-inactive'
 );
-// Card
-const style = window.getComputedStyle(card[0]);
+// Cards
+const style = window.getComputedStyle(cards[0]);
 const marginRight = style.getPropertyValue('margin-right');
 
 // Event HAndlers
@@ -63,7 +63,7 @@ const showSearchBar = () => {
 };
 
 // Carousel
-const cardCount = card.length;
+const cardCount = cards.length;
 
 let addCardMargin = parseInt(marginRight);
 let currentCardIndex = 0;
@@ -126,17 +126,33 @@ const intialCarouselStyle = () => {
 
   if (window.innerWidth > 790) {
     // Viewport medium-up
-    if (card.length === 2) {
+    if (cards.length === 2) {
       nextBtn.style.visibility = 'hidden';
     }
   } else {
     // Viewport mobile
-    if (card.length === 1) {
+    if (cards.length === 1) {
       nextBtn.style.visibility = 'hidden';
     }
   }
 
-  //Add carousel dot button
+  const buttons = Array.from(cards).map((_, index) => {
+    const button = document.createElement('button');
+    if (index === 0) {
+      button.classList.add('active');
+    }
+
+    return button;
+  });
+
+  const dotContainer = document.querySelector('.dot-container');
+  if (window.innerWidth > 790) {
+    const buttonHalfLength = Math.ceil(cards.length / 2);
+    const desktopDotButton = buttons.slice(0, buttonHalfLength);
+    dotContainer.append(...desktopDotButton);
+  } else {
+    dotContainer.append(...buttons);
+  }
 };
 
 //Event Listeners
