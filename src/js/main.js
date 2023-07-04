@@ -72,44 +72,57 @@ const updateCarousel = () => {
   const cardWidth = carouselContainer.children[0].offsetWidth;
   const translateX = currentCardIndex * (cardWidth + addCardMargin);
   carouselContainer.style.transform = `translateX(-${translateX}px)`;
-
-  console.log(translateX);
 };
 
 const previousButton = () => {
+  nextBtn.style.visibility = 'visible';
+
   if (window.innerWidth > 790) {
     // 2 card content
-    if (currentCardIndex > 1) {
+    if (currentCardIndex >= 2) {
       currentCardIndex -= 2;
-      updateCarousel();
     }
   } else {
     // 1 card/Mobile View
-    if (currentCardIndex > 0) {
+    if (currentCardIndex >= 1) {
       currentCardIndex -= 1;
-      updateCarousel();
     }
   }
+
+  // Hide previous button on first slide
+  if (currentCardIndex === 0) {
+    prevBtn.style.visibility = 'hidden';
+  }
+
+  updateCarousel();
 };
 
 const nextButton = () => {
+  prevBtn.style.visibility = 'visible';
+
   if (window.innerWidth > 790) {
     // 2 card content
     if (currentCardIndex < cardCount - 2) {
       currentCardIndex += 2;
-      updateCarousel();
     }
   } else {
     // 1 card/Mobile View
     if (currentCardIndex < cardCount - 1) {
       currentCardIndex += 1;
-      updateCarousel();
     }
   }
+
+  // Hide next button on last slide
+  if (currentCardIndex >= cardCount - 1) {
+    nextBtn.style.visibility = 'hidden';
+  }
+
+  updateCarousel();
 };
 
 const intialCarouselStyle = () => {
-  // button prev display none
+  // TODOS:
+  // Prev btn initial state hidden
   //Add carousel dot button
 };
 
