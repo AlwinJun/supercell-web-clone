@@ -64,9 +64,84 @@ const showSearchBar = () => {
 
 // Carousel
 const cardCount = cards.length;
-
 let addCardMargin = parseInt(marginRight);
 let currentCardIndex = 0;
+let dotButtons;
+let currentDotIndex = 0;
+const dotContainer = document.querySelector('.dot-container');
+
+const intialCarouselStyle = () => {
+  // Prev btn initial state hidden
+  prevBtn.style.visibility = 'hidden';
+
+  if (window.innerWidth > 790) {
+    // Viewport medium-up
+    if (cards.length === 2) {
+      nextBtn.style.visibility = 'hidden';
+    }
+  } else {
+    // Viewport mobile
+    if (cards.length === 1) {
+      nextBtn.style.visibility = 'hidden';
+    }
+  }
+
+  displayDotButtons()
+    .then(dotButtonsSlider)
+    .catch((error) => console.log(error));
+};
+
+function dotButtonsSlider() {
+  // Add event listeners to dot buttons
+  dotButtons.forEach((button, index) => {
+    button.addEventListener('click', () => {
+      currentCardIndex = index * (window.innerWidth > 790 ? 2 : 1);
+      currentDotIndex = index;
+      if (window.innerWidth > 790 ? 2 : 1)
+        updateActiveDotButton(currentDotIndex);
+      updateCarousel();
+    });
+  });
+}
+
+function displayDotButtons() {
+  return new Promise((resolve, reject) => {
+    const buttons = Array.from(cards).map((_, index) => {
+      const button = document.createElement('button');
+      if (index === 0) {
+        button.classList.add('active');
+      }
+
+      return button;
+    });
+
+    if (window.innerWidth > 790) {
+      const buttonHalfLength = Math.ceil(cards.length / 2);
+      const desktopDotButton = buttons.slice(0, buttonHalfLength);
+      dotContainer.append(...desktopDotButton);
+    } else {
+      dotContainer.append(...buttons);
+    }
+
+    dotButtons = dotContainer.querySelectorAll('button');
+
+    if (dotButtons.length > 0) {
+      resolve();
+    } else {
+      reject('No buttons found');
+    }
+  });
+}
+
+function updateActiveDotButton(currentDotIndex) {
+  dotButtons.forEach((btn, index) => {
+    if (index === currentDotIndex) {
+      btn.classList.add('active');
+    } else {
+      btn.classList.remove('active');
+    }
+  });
+}
 
 const updateCarousel = () => {
   const cardWidth = carouselContainer.children[0].offsetWidth;
@@ -94,6 +169,8 @@ const previousButton = () => {
     prevBtn.style.visibility = 'hidden';
   }
 
+  currentDotIndex--;
+  updateActiveDotButton(currentDotIndex);
   updateCarousel();
 };
 
@@ -117,42 +194,10 @@ const nextButton = () => {
     nextBtn.style.visibility = 'hidden';
   }
 
+  currentDotIndex++;
+  updateActiveDotButton(currentDotIndex);
+
   updateCarousel();
-};
-
-const intialCarouselStyle = () => {
-  // Prev btn initial state hidden
-  prevBtn.style.visibility = 'hidden';
-
-  if (window.innerWidth > 790) {
-    // Viewport medium-up
-    if (cards.length === 2) {
-      nextBtn.style.visibility = 'hidden';
-    }
-  } else {
-    // Viewport mobile
-    if (cards.length === 1) {
-      nextBtn.style.visibility = 'hidden';
-    }
-  }
-
-  const buttons = Array.from(cards).map((_, index) => {
-    const button = document.createElement('button');
-    if (index === 0) {
-      button.classList.add('active');
-    }
-
-    return button;
-  });
-
-  const dotContainer = document.querySelector('.dot-container');
-  if (window.innerWidth > 790) {
-    const buttonHalfLength = Math.ceil(cards.length / 2);
-    const desktopDotButton = buttons.slice(0, buttonHalfLength);
-    dotContainer.append(...desktopDotButton);
-  } else {
-    dotContainer.append(...buttons);
-  }
 };
 
 //Event Listeners
