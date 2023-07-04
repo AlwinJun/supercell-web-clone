@@ -6,6 +6,7 @@ const navContent = document.querySelector('.nav-expand');
 const navItems = document.querySelectorAll('.nav-item');
 const dropdownGrid = document.querySelector('.dropdownGrid');
 const searchIcon = document.querySelector('.search');
+const searchBar = document.querySelector('.search-bar');
 const carouselContainer = document.querySelector('.carousel-container');
 const cards = carouselContainer.querySelectorAll('.card');
 const prevBtn = document.querySelector('.carousel-prev');
