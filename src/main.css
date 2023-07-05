@@ -4,6 +4,7 @@
 @import 'base/global.css';
 
 @import 'components/carousel.css';
+@import 'components/footer.css';
 @import 'components/navbar.css';
 
 @import 'pages/index.css';
