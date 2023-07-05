@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "image": "assets/images/pride-blog-thumbnail.webp",
+    "alt": "pride image",
+    "category": "News",
+    "title": "Better Games Together: One Year On And Going Strong"
+  },
+  {
+    "id": 2,
+    "image": "assets/images/news_thumbnail_gdc.webp",
+    "alt": "gdc thumbnail",
+    "category": "News",
+    "title": "Looking Forward to Meeting You"
+  },
+  {
+    "id": 3,
+    "image": "assets/images/meet-clash-thumbnail.webp",
+    "alt": "coc team thumbnail",
+    "category": "Career",
+    "title": "The Clash of Clans Team Welcomes You"
+  },
+  {
+    "id": 4,
+    "image": "assets/images/ilkka2023_chapter_clashhorizon_thumb.webp",
+    "alt": "ilkka thumbnail",
+    "category": "Ilkka's",
+    "title": "The Next Chapter of Supercell"
+  },
+  {
+    "id": 5,
+    "image": "assets/images/article_thumb_everdale_metacore_1.webp",
+    "alt": "everlade thumbanial",
+    "category": "News",
+    "title": "Everdale’s story continues, thanks to Metacore"
+  },
+  {
+    "id": 6,
+    "image": "assets/images/article_thumb_brawlwc2022.webp",
+    "alt": "brawl supercell",
+    "category": "News",
+    "title": "The Brawl Stars World Finals Are Over, and We Have a Winner!"
+  }
+]

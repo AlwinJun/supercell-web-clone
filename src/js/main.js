@@ -1,3 +1,5 @@
+import { getNewsData } from './data.js';
+
 // DOM Elements
 const navBtn = document.querySelector('.nav-toggle');
 const navContent = document.querySelector('.nav-expand');
@@ -179,8 +181,13 @@ const intialCarouselStyle = () => {
   dotButtonsSlider();
 };
 
+const displayComponentsData = () => {
+  getNewsData();
+  intialCarouselStyle();
+};
+
 //Event Listeners
-document.addEventListener('DOMContentLoaded', intialCarouselStyle);
+document.addEventListener('DOMContentLoaded', displayComponentsData);
 navBtn.addEventListener('click', navBarExpand);
 navItems.forEach((item) => item.addEventListener('click', showSubItems));
 searchIcon.addEventListener('click', showSearchBar);
