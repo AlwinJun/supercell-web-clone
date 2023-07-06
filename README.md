@@ -26,3 +26,7 @@ This will watch all the chnages on the src/\*css and compile it to dist/style.cs
 ### Note
 
 If you encounter a problem regarding of some styles not working.Make sure that your borwser is not outdated.
+
+## License
+
+See the [MIT License](https://github.com/AlwinJun/supercell-web-clone/blob/main/LICENSE.txt) file for more info.
