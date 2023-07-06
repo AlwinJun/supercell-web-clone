@@ -1,13 +1,5 @@
-export const getNewsData = () => {
-  return fetch('/src/data/news-archives.json')
-    .then((response) => response.json())
-    .then((data) => displayNews(data))
-    .catch((err) => console.log('Error: ', err));
-};
-
-getNewsData();
-const displayNews = (data) => {
-  let articles = data.map((news) => {
+const displayData = ({ newsArchive, carouselContent }) => {
+  let newsArticle = newsArchive.map((news) => {
     return `<article class="news" data-id="${news.id}">
             <a href="#">
               <img
@@ -24,6 +16,32 @@ const displayNews = (data) => {
           </article>`;
   });
 
-  articles = articles.join('');
-  document.querySelector('.news-articles').innerHTML = articles;
+  newsArticle = newsArticle.join('');
+  document.querySelector('.news-articles').innerHTML = newsArticle;
+
+  let cards = carouselContent.map((card) => {
+    return `<article class="card" data-id="${card.id}">
+            <img src="${card.image}" alt="" />
+            <div class="card-text">
+              <h3>${card.title}</h3>
+              <p>${card.body}</p>
+              <div class="read-article">
+                <a href="#">Read Article</a>
+              </div>
+            </div>
+          </article>`;
+  });
+
+  cards = cards.join('');
+  document.querySelector('.carousel-container').innerHTML = cards;
+};
+
+export const getData = () => {
+  return fetch('/src/data/data.json')
+    .then((response) => response.json())
+    .then((data) => {
+      displayData(data);
+      return data;
+    })
+    .catch((err) => console.log('Error: ', err));
 };

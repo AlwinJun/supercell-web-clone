@@ -1,19 +1,18 @@
-import { getNewsData } from './data.js';
+import { getData } from './data.js';
 
 // DOM Elements
 const navBtn = document.querySelector('.nav-toggle');
 const navContent = document.querySelector('.nav-expand');
 const navItems = document.querySelectorAll('.nav-item');
-const dropdownGrid = document.querySelector('.dropdownGrid');
+// const dropdownGrid = document.querySelector('.dropdownGrid');
 const searchIcon = document.querySelector('.search');
 const searchBar = document.querySelector('.search-bar');
 const carouselContainer = document.querySelector('.carousel-container');
-const cards = carouselContainer.querySelectorAll('.card');
 const prevBtn = document.querySelector('.carousel-prev');
 const nextBtn = document.querySelector('.carousel-next');
 const dotContainer = document.querySelector('.dot-container');
 
-//Get  styles property
+// Get styles property
 const rootStyles = getComputedStyle(document.documentElement);
 const inactiveColor = rootStyles.getPropertyValue('--clr-inactive');
 const activeInactiveColor = rootStyles.getPropertyValue(
@@ -21,9 +20,9 @@ const activeInactiveColor = rootStyles.getPropertyValue(
 );
 
 // Carousel Variables
-const cardCount = cards.length;
-const style = window.getComputedStyle(cards[0]);
-const marginRight = parseInt(style.getPropertyValue('margin-right'));
+let cards;
+let cardCount;
+let marginRight;
 let currentCardIndex = 0;
 let currentDotIndex = 0;
 let dotButtons;
@@ -45,7 +44,7 @@ const toggleNavContent = (navItem) => {
 
   // Add 'rotate' and 'white' if isClicked is truthy
   navItemText.style.color = isClicked ? 'white' : inactiveColor;
-  navItemArrowBtn.classList.add('rotate', isClicked);
+  navItemArrowBtn.classList.toggle('rotate', isClicked);
 };
 
 const updateCarousel = () => {
@@ -92,7 +91,6 @@ const dotButtonsSlider = () => {
       nextBtn.style.visibility =
         index === arr.length - 1 ? 'hidden' : 'visible';
       prevBtn.style.visibility = index > 0 ? 'visible' : 'hidden';
-
       currentDotIndex = index;
       updateActiveDotButton(currentDotIndex);
       updateCarousel();
@@ -106,7 +104,6 @@ const displayDotButtons = () => {
     if (index === 0) {
       button.classList.add('active');
     }
-
     return button;
   });
 
@@ -159,34 +156,40 @@ const nextButton = () => {
   // Hide next button on last slide
   nextBtn.style.visibility =
     currentCardIndex >= cardCount - 1 ? 'hidden' : 'visible';
-
   currentDotIndex++;
   updateActiveDotButton(currentDotIndex);
   updateCarousel();
 };
 
-const intialCarouselStyle = () => {
-  // Prev btn initial state hidden
+const initialCarouselStyle = () => {
   prevBtn.style.visibility = 'hidden';
 
   if (window.innerWidth > 790) {
-    // Viewport medium-up {
-    nextBtn.style.visibility = cards.length <= 2 ? 'hidden' : 'visible';
+    nextBtn.style.visibility = cardCount <= 2 ? 'hidden' : 'visible';
   } else {
-    // Viewport mobile
-    nextBtn.style.visibility = cards.length === 1 ? 'hidden' : 'visible';
+    nextBtn.style.visibility = cardCount === 1 ? 'hidden' : 'visible';
   }
 
   displayDotButtons();
   dotButtonsSlider();
 };
 
-const displayComponentsData = () => {
-  getNewsData();
-  intialCarouselStyle();
+// Wait for the news and carouselContent to be fetched and rendered before referencing the '.card' class and getting the styles
+const displayComponentsData = async () => {
+  await getData(); // Wait for the data to be fetched and rendered
+
+  // Get the '.card' elements and their count
+  cards = document.querySelectorAll('.card');
+  cardCount = cards.length;
+
+  // Get the style of the first card and extract the right margin value
+  const style = window.getComputedStyle(cards[0]);
+  marginRight = parseInt(style.getPropertyValue('margin-right'));
+
+  initialCarouselStyle();
 };
 
-//Event Listeners
+// Event Listeners
 document.addEventListener('DOMContentLoaded', displayComponentsData);
 navBtn.addEventListener('click', navBarExpand);
 navItems.forEach((item) => item.addEventListener('click', showSubItems));
