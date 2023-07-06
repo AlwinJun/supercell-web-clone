@@ -21,7 +21,7 @@ To watch your css files for changes, run:
 npm run watch:css
 ```
 
-This will watch all the chnages on the src/\*css and compile it to dist/style.css.
+This will watch all the changes on the src/\*.css and compile it to dist/style.css.
 
 ### Note
 
