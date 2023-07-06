@@ -47,10 +47,25 @@ const toggleNavContent = (navItem) => {
   navItemArrowBtn.classList.toggle('rotate', isClicked);
 };
 
+const handleViewportResize = () => {
+  if (window.innerWidth > 790) {
+    nextBtn.style.visibility = cardCount <= 2 ? 'hidden' : 'visible';
+  } else {
+    nextBtn.style.visibility = cardCount <= 1 ? 'hidden' : 'visible';
+  }
+
+  // Update dot buttons and carousel based on viewport width
+  dotContainer.innerHTML = ''; // Clear existing dot buttons to avoid dot concatonation
+  displayDotButtons();
+  dotButtonsSlider();
+  updateCarousel();
+};
+
 const updateCarousel = () => {
   const cardWidth = carouselContainer.children[0].offsetWidth; //Get first card witdh
   const translateX = currentCardIndex * (cardWidth + marginRight);
   carouselContainer.style.transform = `translateX(-${translateX}px)`;
+  updateActiveDotButton(currentDotIndex); //Retain the active class of button on when the resize happens
 };
 
 const updateActiveDotButton = (currentDotIndex) => {
@@ -172,6 +187,8 @@ const initialCarouselStyle = () => {
 
   displayDotButtons();
   dotButtonsSlider();
+
+  handleViewportResize();
 };
 
 // Wait for the news and carouselContent to be fetched and rendered before referencing the '.card' class and getting the styles
@@ -191,6 +208,7 @@ const displayComponentsData = async () => {
 
 // Event Listeners
 document.addEventListener('DOMContentLoaded', displayComponentsData);
+window.addEventListener('resize', handleViewportResize);
 navBtn.addEventListener('click', navBarExpand);
 navItems.forEach((item) => item.addEventListener('click', showSubItems));
 searchIcon.addEventListener('click', showSearchBar);
