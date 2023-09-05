@@ -1,4 +1,4 @@
-import './styles/dist/style.css';
+import './styles/style.css';
 
 import { displayElements } from './data.ts';
 
