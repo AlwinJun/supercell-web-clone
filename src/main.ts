@@ -1,4 +1,6 @@
-import { getData } from './data.js';
+import './styles/dist/style.css'
+
+import { getData } from './data.ts';
 
 // DOM Elements
 const navBtn = document.querySelector('.nav-toggle');

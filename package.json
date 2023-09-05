@@ -2,10 +2,13 @@
   "name": "supercell-web-clone",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "main.ts",
   "scripts": {
-    "watch:css": "postcss src/main.css -o dist/style.css -w",
-    "build:css": "postcss src/main.css -o dist/style.css"
+    "watch:css": "postcss src/styles/postcss/main.css -o src/styles/dist/style.css -w",
+    "build:css": "postcss src/styles/postcss/main.css -o src/styles/dist/style.css -w",
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
   },
   "keywords": [],
   "author": "",
@@ -16,7 +19,9 @@
     "postcss": "^8.4.24",
     "postcss-cli": "^10.1.0",
     "postcss-import": "^15.1.0",
-    "postcss-preset-env": "^8.5.1"
+    "postcss-preset-env": "^8.5.1",
+    "typescript": "^5.0.2",
+    "vite": "^4.4.5"
   }
 }
 
