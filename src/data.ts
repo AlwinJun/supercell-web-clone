@@ -1,6 +1,30 @@
-const displayData = ({ newsArchive, carouselContent }) => {
-  let newsArticle = newsArchive.map((news) => {
-    return `<article class="news" data-id="${news.id}">
+import { datas } from './data/datas';
+
+interface News {
+  id: number;
+  image: string;
+  alt: string;
+  category: string;
+  title: string;
+}
+
+interface Carousel {
+  id: number;
+  image: string;
+  title: string;
+  body: string;
+}
+
+type DataSource = () => Promise<{ newsArchive: News[]; carouselContent: Carousel[] }>;
+
+// Define the displayData function
+const displayData = async (dataSource: DataSource): Promise<void> => {
+  // Get the data from the data source and render it as HTML elements
+  const { newsArchive, carouselContent } = await dataSource();
+  // The same code as before
+  let newsArticle: string = newsArchive
+    .map((news) => {
+      return `<article class="news" data-id="${news.id}">
             <a href="#">
               <img
                 src="${news.image}"
@@ -14,13 +38,14 @@ const displayData = ({ newsArchive, carouselContent }) => {
               >
             </p>
           </article>`;
-  });
+    })
+    .join('');
 
-  newsArticle = newsArticle.join('');
-  document.querySelector('.news-articles').innerHTML = newsArticle;
+  (document.querySelector('.news-articles') as HTMLDivElement).innerHTML = newsArticle;
 
-  let cards = carouselContent.map((card) => {
-    return `<article class="card" data-id="${card.id}">
+  let cards: string = carouselContent
+    .map((card) => {
+      return `<article class="card" data-id="${card.id}">
             <img src="${card.image}" alt="" />
             <div class="card-text">
               <h3>${card.title}</h3>
@@ -28,20 +53,18 @@ const displayData = ({ newsArchive, carouselContent }) => {
               <div class="read-article">
                 <a href="#">Read Article</a>
               </div>
-            </div>
+             </div>
           </article>`;
-  });
-
-  cards = cards.join('');
-  document.querySelector('.carousel-container').innerHTML = cards;
-};
-
-export const getData = () => {
-  return fetch('/src/data/data.json')
-    .then((response) => response.json())
-    .then((data) => {
-      displayData(data);
-      return data;
     })
-    .catch((err) => console.log('Error: ', err));
+    .join('');
+
+  (document.querySelector('.carousel-container') as HTMLDivElement).innerHTML = cards;
 };
+
+const getDataSource = (): DataSource => {
+  return async () => {
+    return datas;
+  };
+};
+
+export const displayElements = displayData(getDataSource());
