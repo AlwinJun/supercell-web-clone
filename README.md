@@ -22,6 +22,17 @@ npm run watch:css
 ```
 This will watch all the changes on the src/styles/postcss/main.css and compile it to src/styles/dist/style.css.
 
+To run it in your local browser:
+
+```bash
+npm run dev
+```
+
+Build and preview site
+
+```bash
+npm run build && npm run preview
+```
 
 ### Note
 
